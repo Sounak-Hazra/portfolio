@@ -1,0 +1,13 @@
+.grid-for-blogs{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(375px,1fr));
+    gap: 20px;
+}
+
+@media  screen and (max-width:640px) {
+    .grid-for-blogs{
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(275px,1fr));
+        gap: 20px;
+    }
+}

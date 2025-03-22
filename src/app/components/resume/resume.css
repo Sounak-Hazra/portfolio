@@ -1,0 +1,11 @@
+
+
+.single-line-grid-box {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, 50px);
+}
+
+.time-line-box-shadow{
+    box-shadow: 1px -1px 0px 2px var(--box-colors);
+}

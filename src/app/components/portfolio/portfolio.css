@@ -1,0 +1,13 @@
+.grid-for-projects{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 20px;
+}
+.project:hover .eye{
+    opacity: 1;
+    filter: brightness(1);
+}
+
+.project:hover .projectImage{
+    filter: brightness(.5);
+}

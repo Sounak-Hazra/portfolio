@@ -1,0 +1,82 @@
+import React, { useCallback, useEffect, useState,memo, useMemo } from 'react'
+import { Separator } from '@/components/ui/separator'
+import Projects from '../(utility)/Projects'
+import "./portfolio.css"
+import ProjectDetails from '../(utility)/ProjectDetails'
+import useSetProjectArray from '@/app/(app)/hooks/useSetProjectsArray'
+
+
+const Portfolio = () => {
+
+    const [project, setProject] = useState([]);
+    const [isDetails, setIsDetails] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState("")
+    const [projectDetails, setProjectDetails] = useState({})
+    
+    const { arrayOfProjects, allCategorys,changeArray } = useSetProjectArray(project, "all")
+    
+
+
+    const fetchProjects = useCallback(async () => {
+        try {
+            const res = await fetch("api/getprojects", {
+                method:"GET"
+            })
+
+            if (!res.ok) {
+                alert("Some unexpected error occured .")
+                setProject([])
+            } else {
+                const data = await res.json()
+                setProject(data.data)
+            }
+        } catch (error) {
+            setError(error.message)
+            setProject([])
+        } finally {
+            setIsLoading(false)
+        }
+    },[])  
+    
+    useEffect(() => {
+        fetchProjects()
+    }, [fetchProjects])
+
+    
+
+    return (
+        <>
+            <div className='w-full min-h-full py-7 px-7 rounded-3xl '>
+                <h1 className='text-3xl text-[var(--text)] font-extrabold '>
+                    Portfolio
+                </h1>
+                <Separator className='w-full my-5 sm:my-8' />
+                {isDetails && <ProjectDetails projectDetails={projectDetails} setIsDetails = {setIsDetails} />}
+                {!isDetails &&
+                    <div className='h-fit text-[var(--text)]'>
+                        <div className='flex items-center gap-x-5'>
+                            {/* <span className='font-bold text-sm'>All</span>
+                            <span className='font-bold text-sm'>Web devlopment</span>
+                            <span className='font-bold text-sm'>Games</span> */}
+                            {
+                                allCategorys.map((e,i) => {
+                                    return (
+                                        <div key={e}>
+                                             <button  onClick={()=>changeArray(e)} className='font-bold text-sm'>{e}</button>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className='my-5'>
+                            <Projects projects={arrayOfProjects} setIsDetails={setIsDetails} setProjectDetails = {setProjectDetails} />
+                        </div>
+                    </div>
+                }
+            </div>
+        </>
+    )
+}
+
+export default memo(Portfolio)

@@ -1,0 +1,69 @@
+
+
+.special-border-for-utility {
+    background: linear-gradient(45deg, rgba(128, 128, 128, 0.245), var(--nav-color));
+}
+
+.border-for-dots {
+    box-shadow: 0px 0px 0px 5px var(--svg-border-color);
+}
+
+
+.image-frame {
+     --gradient-1: #1e1e1f; /* Deep dark gray */
+    --gradient-2: #282829; /* Slightly lighter gray */
+    --gradient-3: #3b3b39;
+
+    background:
+        linear-gradient(135deg,
+            var(--gradient-1) 0%,
+            var(--gradient-2) 40%,
+            var(--gradient-3) 100%);
+
+    animation: gradientShift 3s ease infinite;
+    background-size: 150% 150%;
+    border-radius: 12px;
+    padding: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    /* Subtle white border */
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.inset-shadow-for-navIcons::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0px 0px 40px 9px black;
+    transform: translate(50%,50%);
+}
+
+.landing-animation-boxes {
+    animation: landing .3s ease-in-out forwards;
+}
+
+@keyframes landing {
+    0% {
+        transform: scale(.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+

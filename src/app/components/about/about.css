@@ -1,0 +1,17 @@
+
+.grid-for-areaOfExpertis{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+    gap: 15px;
+}
+
+@media screen and (max-width:640px) {
+    .grid-for-areaOfExpertis{
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    }
+}
+
+.special-background-border-about{
+    background: linear-gradient(45deg, gray, var(--about-boxes-color));
+}
