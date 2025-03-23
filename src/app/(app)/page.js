@@ -13,10 +13,10 @@ import { motion } from "framer-motion";
 
 export default function Page() {
 
-  const [isAbout, setisAbout] = useState(false)
+  const [isAbout, setisAbout] = useState(true)
   const [isResume, setisResume] = useState(false)
   const [isPortfolio, setisPortfolio] = useState(false)
-  const [isBlog, setisBlog] = useState(true)
+  const [isBlog, setisBlog] = useState(false)
   const { dark, setDark } = useDarkThem()
 
 
