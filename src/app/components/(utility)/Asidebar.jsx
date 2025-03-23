@@ -49,7 +49,7 @@ const Asidebar = () => {
                             </div>
                             <div className='flex flex-col justify-around'>
                                 <div className='text-gray-400 text-xs'>EMAIL</div>
-                                <div className='text-[var(--text)] text-sm'>hazrasounak87</div>
+                                <div className='text-[var(--text)] text-sm'>hazrasounak87@gmail.com</div>
                             </div>
                         </div>
                         <div className='flex gap-3 w-48 lg:w-auto  md:m-0 m-2'>
