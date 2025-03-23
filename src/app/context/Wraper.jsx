@@ -13,7 +13,7 @@ export default function Wrapper({ children, session }) {
 
   return (
     <SessionProvider  session={session}>
-      <div onMouseMove={mouseMove}>
+      <div className="hidden md:block" onMouseMove={mouseMove}>
 
       <div ref={pointer} className='custom-cursor'></div>
 
