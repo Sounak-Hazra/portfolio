@@ -120,3 +120,7 @@ body .light {
     z-index: -10;
     border-radius: 16px;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}

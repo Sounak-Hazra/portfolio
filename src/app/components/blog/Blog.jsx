@@ -72,7 +72,7 @@ const Blog = () => {
                     {
                         blogs.map((e) => {
                             return (
-                                <Link href={"#"} key={e._id}>
+                                <Link href={e.link || "#"} key={e._id} target='blank'>
                                     <div className=' rounded-2xl bg-[var(--small-box-color)] landing-animation-boxes small-box-shadows '>
                                         <div className="relative overflow-hidden rounded-xl">
                                             <img

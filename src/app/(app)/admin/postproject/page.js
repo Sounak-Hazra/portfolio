@@ -30,7 +30,9 @@ const page = () => {
             category: "",
             images: [],
             keyfeatures: [],
-            date: Date.now()
+            date: Date.now(),
+            link: "",
+            githublink:""
         },
     })
 
@@ -46,7 +48,7 @@ const page = () => {
             })
 
             if (!res.ok) {
-                throw new Error(`Some thing wrong error code ${res.status} `)
+                throw new Error(`Something wrong error code ${res.status} `)
             }
             else {
                 alert(`Blog posted successfully status ${res.status} `)
@@ -181,6 +183,40 @@ const page = () => {
                                                 type="date"
                                                 className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
                                                 onChange = {(e)=>form.setValue("date" ,new Date(e.target.value))}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                             <FormField
+                                control={form.control}
+                                name="link"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="font-semibold text-xl text-[var(--text)]">Link</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
+                                                placeholder="link of the project"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                             <FormField
+                                control={form.control}
+                                name="githublink"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="font-semibold text-xl text-[var(--text)]">Github Link</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
+                                                placeholder="Github link of the project"
+                                                {...field}
                                             />
                                         </FormControl>
                                         <FormMessage />

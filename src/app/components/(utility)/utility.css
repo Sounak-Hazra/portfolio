@@ -67,3 +67,13 @@
 }
 
 
+.active{
+    opacity: 1;
+    width: fit-content;
+    height: 100%;
+}
+
+.on{
+    background-color: var(--child-box-color);
+    scale: 1.5;
+}

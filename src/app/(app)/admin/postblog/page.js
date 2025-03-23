@@ -26,7 +26,8 @@ const page = () => {
             name: "",
             description: "",
             date: Date.now(),
-            image: ""
+            image: "",
+            link:""
         },
     })
 
@@ -126,6 +127,24 @@ const page = () => {
                                                 type="text"
                                                 className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
                                                 placeholder="Enter image URL"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="link"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="font-semibold text-xl text-[var(--text)]">Blog URL</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="text"
+                                                className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
+                                                placeholder="Enter blog URL"
                                                 {...field}
                                             />
                                         </FormControl>

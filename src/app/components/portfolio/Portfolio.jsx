@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState,memo, useMemo } from 'react'
+import React, { useCallback, useEffect, useState, memo, useMemo } from 'react'
 import { Separator } from '@/components/ui/separator'
 import Projects from '../(utility)/Projects'
 import "./portfolio.css"
@@ -13,15 +13,15 @@ const Portfolio = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
     const [projectDetails, setProjectDetails] = useState({})
-    
-    const { arrayOfProjects, allCategorys,changeArray } = useSetProjectArray(project, "all")
-    
+
+    const { arrayOfProjects, allCategorys, changeArray } = useSetProjectArray(project, "all")
+
 
 
     const fetchProjects = useCallback(async () => {
         try {
             const res = await fetch("api/getprojects", {
-                method:"GET"
+                method: "GET"
             })
 
             if (!res.ok) {
@@ -37,13 +37,13 @@ const Portfolio = () => {
         } finally {
             setIsLoading(false)
         }
-    },[])  
-    
+    }, [])
+
     useEffect(() => {
         fetchProjects()
     }, [fetchProjects])
 
-    
+
 
     return (
         <>
@@ -52,25 +52,30 @@ const Portfolio = () => {
                     Portfolio
                 </h1>
                 <Separator className='w-full my-5 sm:my-8' />
-                {isDetails && <ProjectDetails projectDetails={projectDetails} setIsDetails = {setIsDetails} />}
+                {isDetails && <ProjectDetails projectDetails={projectDetails} setIsDetails={setIsDetails} />}
                 {!isDetails &&
                     <div className='h-fit text-[var(--text)]'>
-                        <div className='flex items-center gap-x-5'>
+                        <div className='max-w-full overflow-x-auto overflow-y-hidden no-scrollbar'>
                             {/* <span className='font-bold text-sm'>All</span>
                             <span className='font-bold text-sm'>Web devlopment</span>
                             <span className='font-bold text-sm'>Games</span> */}
-                            {
-                                allCategorys.map((e,i) => {
-                                    return (
-                                        <div key={e}>
-                                             <button  onClick={()=>changeArray(e)} className='font-bold text-sm'>{e}</button>
-                                        </div>
-                                    )
-                                })
-                            }
+                            <div className='flex items-center gap-x-5 '>
+                                <div key={"all"}>
+                                    <button onClick={() => changeArray("all")} className='font-bold text-sm'>All</button>
+                                </div>
+                                {
+                                    allCategorys.map((e, i) => {
+                                        return (
+                                            <div key={e}>
+                                                <button onClick={() => changeArray(e)} className='font-bold text-sm'>{e}</button>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                         <div className='my-5'>
-                            <Projects projects={arrayOfProjects} setIsDetails={setIsDetails} setProjectDetails = {setProjectDetails} />
+                            <Projects projects={arrayOfProjects} setIsDetails={setIsDetails} setProjectDetails={setProjectDetails} />
                         </div>
                     </div>
                 }

@@ -8,6 +8,8 @@ const Projects = ({ projects = [], setIsDetails, setProjectDetails }) => {
         setProjectDetails(e)
         setIsDetails(true)
     }
+
+    
     return (
         <div className=' text-[var(--text)] w-full max-h-full  grid-for-projects'>
             {

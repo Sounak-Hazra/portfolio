@@ -8,19 +8,20 @@ import { getToken } from "next-auth/jwt";
 export async function POST(request) {
     try {
         
-        const token = await getToken({ request, secret: process.env.NEXTAUTH_SECRET });
+        const token = await getToken({ req:request, secret: process.env.NEXTAUTH_SECRET });
         if (!token) return NextResponse.json({ message: "You are unauthenticated" }, { status: 401 })
         
         const req = await request.json()
 
-        const { name, description, image, date } = req
+        const { name, description, image, date,link } = req
         
 
         const myData = {
             name,
             description,
             image,
-            date : new Date(date)
+            date: new Date(date),
+            link
         }
 
         const isOk = blogSchema.safeParse(myData)

@@ -11,7 +11,7 @@ export async function POST(req) {
         const request = await req.json()
         const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
         if(!token) return NextResponse.json({message:"You are unauthenticated"},{status:401})
-        const { name, title, images,category, keyfeatures, date,description } = request
+        const { name, title, images,category, keyfeatures, date,description,link,githublink } = request
         const projectData = {
             name,
             title,
@@ -19,11 +19,14 @@ export async function POST(req) {
             keyfeatures,
             category,
             description,
-            date: new Date(date)
+            date: new Date(date),
+            link,
+            githublink
         }
         const isOkData = projectSchema.safeParse(projectData)
-
+        console.log(isOkData)
         if (!isOkData.success) {
+            console.log("Data validation failed")
             return NextResponse.json({message:"Data validation filed .",error:isOkData.error.format()},{status:400})
         }
 

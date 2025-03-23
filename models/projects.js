@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 const projectsSchema = new mongoose.Schema({
     name: {
@@ -28,6 +29,14 @@ const projectsSchema = new mongoose.Schema({
     date: {
         type: Date,
         default:Date.now()
+    },
+    link: {
+        type: String,
+        required:true
+    },
+    githublink: {
+        type: String,
+        required: true
     }
 })
 

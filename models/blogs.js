@@ -16,6 +16,10 @@ const blogsSchema = new mongoose.Schema({
     date: {
         type: Date,
         required:true,
+    },
+    link: {
+        type: String,
+        required:true
     }
 })
 
