@@ -1,5 +1,5 @@
 "use client"
-import React, { memo, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import Nav from "../components/(utility)/Nav";
 import Asidebar from "../components/(utility)/Asidebar";
 import About from "../components/about/About";
@@ -8,7 +8,7 @@ import Blog from "../components/blog/Blog";
 import Portfolio from "../components/portfolio/Portfolio";
 import useDarkThem from "./hooks/useDarkThem";
 import { motion } from "framer-motion";
-
+import { useRef } from 'react'
 
 
 export default function Page() {
@@ -21,12 +21,12 @@ export default function Page() {
 
 
 
+  
+
+
   return (
     <>
       <main className={` ${!dark && "light"} flex flex-col lg:flex-row gap-5 items-streched justify-center my-16 lg:my-0 mx-5 sm:mx-20  `}>
-        {/* <aside className="w-full lg:w-72 lg:!sticky lg:self-start lg:top-16 h-fit lg:!h-full rounded-3xl relative big-box-shadows flex items-center">
-          <Asidebar />
-        </aside> */}
         <aside className="w-full lg:w-72 lg:!sticky lg:self-start lg:top-0 h-fit lg:!h-screen lg:flex lg:items-center rounded-3xl relative  flex items-center">
           <Asidebar />
         </aside>
@@ -64,7 +64,7 @@ export default function Page() {
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <Portfolio/>
+              <Portfolio />
             </motion.div>
           }
           {isBlog &&

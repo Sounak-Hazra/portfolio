@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./custom.css";
 import Wrapper from "../context/Wraper";
-
+import CustomCursor from "../components/(utility)/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +47,7 @@ export const metadata = {
     ],
   },
 };
+
 
 
 export default function RootLayout({ children }) {

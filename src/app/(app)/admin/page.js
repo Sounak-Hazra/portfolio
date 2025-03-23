@@ -23,6 +23,8 @@ const page = () => {
         }
     }, [session])
 
+    
+
 
 
     if (!session) {
@@ -44,6 +46,7 @@ const page = () => {
     return (
         <>
             <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] px-6 md:px-12 py-10">
+                
                 <nav className="h-20 bg-[var(--bg-secondary)] flex items-center px-6 md:px-8 shadow-md relative w-full border-b border-[var(--border-color)] mb-10 rounded-lg">
                     <h1 className="text-2xl md:text-3xl font-extrabold text-[var(--text-heading)]">Welcome, {adminName}</h1>
                     <div className="ml-auto">
