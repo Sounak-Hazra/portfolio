@@ -41,7 +41,7 @@ const About = () => {
           <div className='my-5 grid-for-areaOfExpertis'>
 
             <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about landing-animation-boxes small-box-shadows'>
-              <div className='h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
+              <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
                 <div className=' w-16 sm:w-20 '>
                   <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
                 </div>
@@ -49,7 +49,7 @@ const About = () => {
                   <h3 className='text-xl font-extrabold text-[var(--text)]'>
                     Web Development
                   </h3>
-                  <div className=' text-[var(--text)] text-xs'>
+                  <div className=' text-[var(--text)] text-xs py-1'>
                     Full-stack development with Next.js, React, and MongoDB, delivering high-quality, scalable web applications.
                   </div>
                 </div>
@@ -57,7 +57,7 @@ const About = () => {
             </div>
 
             <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about landing-animation-boxes small-box-shadows'>
-              <div className='h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
+              <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
                 <div className=' w-16 sm:w-20 '>
                   <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
                 </div>
@@ -65,7 +65,7 @@ const About = () => {
                   <h3 className='text-xl font-extrabold text-[var(--text)]'>
                     Python Development
                   </h3>
-                  <div className=' text-[var(--text)] text-xs'>
+                  <div className=' text-[var(--text)] text-xs py-1'>
                     Building efficient Python applications, including automation scripts, data processing, and backend development.
                   </div>
                 </div>
@@ -73,7 +73,7 @@ const About = () => {
             </div>
 
             <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about landing-animation-boxes small-box-shadows'>
-              <div className='h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
+              <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
                 <div className=' w-16 sm:w-20 '>
                   <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
                 </div>
@@ -81,7 +81,7 @@ const About = () => {
                   <h3 className='text-xl font-extrabold text-[var(--text)]'>
                     Java Programming
                   </h3>
-                  <div className=' text-[var(--text)] text-xs'>
+                  <div className=' text-[var(--text)] text-xs py-1'>
                     Creating robust and optimized Java applications while deepening expertise in object-oriented programming.
                   </div>
                 </div>
@@ -89,7 +89,7 @@ const About = () => {
             </div>
 
             <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about landing-animation-boxes small-box-shadows'>
-              <div className='h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
+              <div className='min-h-36 sm:h-44 min bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
                 <div className=' w-16 sm:w-20 '>
                   <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
                 </div>
@@ -97,7 +97,7 @@ const About = () => {
                   <h3 className='text-xl font-extrabold text-[var(--text)]'>
                     Node.js & Authentication
                   </h3>
-                  <div className=' text-[var(--text)] text-xs'>
+                  <div className=' text-[var(--text)] py-1 text-xs'>
                     Developing secure backend solutions using Node.js, Express, JWT authentication, and MongoDB integration.
                   </div>
                 </div>
