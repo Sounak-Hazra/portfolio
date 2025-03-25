@@ -98,7 +98,7 @@ body {
   position: absolute;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: all 0.1s ease-out;
+  transition: all 0s ease-out;
   z-index: 998;
 }
 
