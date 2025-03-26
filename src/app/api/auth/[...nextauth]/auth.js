@@ -40,7 +40,10 @@ export const authOptions = {
           token.user = user
           console.log(token)
           return token
-        }
+        },
+        async redirect({ url, baseUrl }) {
+          return baseUrl;
+        },
       },
       pages: {
         signIn: '/admin/signin',
