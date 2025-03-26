@@ -34,9 +34,7 @@ const page = () => {
                     <h2 className="text-2xl font-bold mb-4">Sensitive Content</h2>
                     <p className="text-[var(--text-muted)] mb-6">Please log in to access this content.</p>
                     <button
-                        onClick={() => signIn("credentials", {
-                            callbackUrl:"/admin"
-                        })}
+                        onClick={() => signIn()}
                         className="bg-[var(--primary-color)] hover:bg-opacity-90 text-white font-semibold py-2 px-6 rounded-lg transition"
                     >
                         Sign In

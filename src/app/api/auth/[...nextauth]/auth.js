@@ -41,9 +41,10 @@ export const authOptions = {
           console.log(token)
           return token
         },
-        async redirect({ url, baseUrl }) {
-          return baseUrl;
-        },
+        // async redirect({ url, baseUrl }) {
+        //   console.log(baseUrl)
+        //   return baseUrl;
+        // },
       },
       pages: {
         signIn: '/admin/signin',
