@@ -6,9 +6,9 @@ import ProjectDetails from '../(utility)/ProjectDetails'
 import useSetProjectArray from '@/app/(app)/hooks/useSetProjectsArray'
 
 
-const Portfolio = () => {
+const Portfolio = ({project}) => {
 
-    const [project, setProject] = useState([]);
+    // const [project, setProject] = useState([]);
     const [isDetails, setIsDetails] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
@@ -16,32 +16,6 @@ const Portfolio = () => {
 
     const { arrayOfProjects, allCategorys, changeArray } = useSetProjectArray(project, "all")
 
-
-
-    const fetchProjects = useCallback(async () => {
-        try {
-            const res = await fetch("api/getprojects", {
-                method: "GET"
-            })
-
-            if (!res.ok) {
-                alert("Some unexpected error occured .")
-                setProject([])
-            } else {
-                const data = await res.json()
-                setProject(data.data)
-            }
-        } catch (error) {
-            setError(error.message)
-            setProject([])
-        } finally {
-            setIsLoading(false)
-        }
-    }, [])
-
-    useEffect(() => {
-        fetchProjects()
-    }, [fetchProjects])
 
 
 

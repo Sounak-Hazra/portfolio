@@ -10,6 +10,7 @@ import useDarkThem from "./hooks/useDarkThem";
 import { motion } from "framer-motion";
 import { useRef } from 'react'
 import FullScreenphoto from "../components/(utility)/FullScreenPhoto";
+import useFetchData from "./hooks/useGetData";
 
 
 export default function Page() {
@@ -20,6 +21,7 @@ export default function Page() {
   const [isBlog, setisBlog] = useState(false)
   const { dark, setDark } = useDarkThem()
 
+  const {blogs, project} = useFetchData()
 
   const [showFullScreenPhoto, setShowFullScreenPhoto] = useState(false)
 
@@ -67,7 +69,7 @@ export default function Page() {
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <Portfolio />
+              <Portfolio project={project} />
             </motion.div>
           }
           {isBlog &&
@@ -78,7 +80,7 @@ export default function Page() {
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <Blog />
+              <Blog blogs={blogs} />
             </motion.div>
           }
         </div>
