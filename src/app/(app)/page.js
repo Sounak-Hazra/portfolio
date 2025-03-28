@@ -29,7 +29,7 @@ export default function Page() {
     <>
       <main className={` ${!dark && "light"} flex flex-col lg:flex-row gap-5 items-streched justify-center my-16 lg:my-0 mx-5 sm:mx-20  `}>
 
-          <FullScreenphoto isFullPhoto={showFullScreenPhoto} setIsFullScreen={setShowFullScreenPhoto} imgSrc="./myPhotos/myPhoto1.jpg" />
+        <FullScreenphoto isFullPhoto={showFullScreenPhoto} setIsFullScreen={setShowFullScreenPhoto} imgSrc="./myPhotos/myPhoto1.jpg" />
         <aside className="w-full lg:w-72 lg:!sticky lg:self-start lg:top-0 h-fit lg:!h-screen lg:flex lg:items-center rounded-3xl relative  flex items-center">
           <Asidebar setShowFullscreenPhoto={setShowFullScreenPhoto} />
         </aside>

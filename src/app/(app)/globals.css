@@ -77,44 +77,17 @@
 }
 
 body {
-  font-family: Ubuntu,Arial, Helvetica, sans-serif;
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
   background-color: #1e1e1f;
   color: white;
   box-sizing: border-box;
-  cursor: none;
+  cursor: url('/cursor.svg') 12 12, auto;
 }
 
-*{
-  cursor: none;
+button,switch,a{
+  cursor: url('/curserForButton.svg') 12 12, auto;
 }
 
-.custom-cursor {
-  width: 25px;
-  height: 25px;
-  /* background-color: var(--text); */
-  background-color: transparent;
-  border: 3.5px solid var(--svg-border-color);
-  border-radius: 50%;
-  position: absolute;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: all 0s ease-out;
-  z-index: 998;
-}
-
-.custom-cursor::after{
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--text);
-  /* border: 3px solid var(--svg-border-color); */
-  z-index: 999;
-}
 
 
 
