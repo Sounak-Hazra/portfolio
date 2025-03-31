@@ -18,6 +18,32 @@ const Portfolio = ({project}) => {
 
 
 
+    // const fetchProjects = useCallback(async () => {
+    //     try {
+    //         const res = await fetch("api/getprojects", {
+    //             method: "GET"
+    //         })
+
+    //         if (!res.ok) {
+    //             alert("Some unexpected error occured .")
+    //             setProject([])
+    //         } else {
+    //             const data = await res.json()
+    //             setProject(data.data)
+    //         }
+    //     } catch (error) {
+    //         setError(error.message)
+    //         setProject([])
+    //     } finally {
+    //         setIsLoading(false)
+    //     }
+    // }, [])
+
+    // useEffect(() => {
+    //     fetchProjects()
+    // }, [fetchProjects])
+
+
 
     return (
         <>

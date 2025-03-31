@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
 import "./blog.css"
 import Link from 'next/link'
+import LongText from '../(utility)/LongText'
 
 const Blog = ({blogs}) => {
 
@@ -10,34 +11,6 @@ const Blog = ({blogs}) => {
     const [isloading, setIsLoading] = useState("")
     const [error, setError] = useState("")
 
-    // const fetchData = useCallback(async () => {
-    //     setIsLoading(true)
-    //     try {
-    //         const res = await fetch("api/getblogs", {
-    //             method: "GET"
-    //         })
-
-    //         if (!res.ok) {
-    //             alert("Some thing went wrong unable to get data .")
-    //             return
-    //         }
-
-    //         const data = await res.json()
-    //         console.log(data)
-    //         setBlogs(data.data)
-
-    //     } catch (error) {
-    //         alert(error.message)
-    //         setError(error.message)
-    //     } finally {
-    //         setIsLoading(false)
-    //     }
-    // }, [])
-
-
-    // useEffect(() => {
-    //     fetchData()
-    // }, [])
 
     return (
         <>
@@ -56,20 +29,20 @@ const Blog = ({blogs}) => {
                                             <img
                                                 src={e.image}
                                                 alt="Blog image"
-                                                className="rounded-xl w-full h-60 object-cover hover:scale-125 transition-all ease-in-out duration-500"
+                                                className="rounded-xl w-full h-60 object-fit hover:scale-125 transition-all ease-in-out duration-500"
                                             />
                                         </div>
                                         <div className="mt-4 p-4 md:p-6 ">
                                             <p className="text-xs text-gray-500">{new Date(e.date).toDateString()}</p>
-                                            <h2 className="text-xl my-3 font-bold text-[var(--text)] hover:text-[var(--svg-border-color)]">
+                                            <h2 className="text-xl my-3 font-bold text-[var(--text)] hover:text-[var(--svg-border-color)] transition-all duration-500 ease-in-out">
                                                 {e.name}
                                             </h2>
-                                            <p className=" mt-2 text-sm">
-                                                {e.description}
-                                            </p>
+                                            <div className=" mt-2 text-sm">
+                                                <LongText text={e.description} smallLength={100} stopPropagation={true} />
+                                            </div>
                                         </div>
                                     </div>
-                                </Link>
+                                    </Link>
                             )
                         })
                     }
