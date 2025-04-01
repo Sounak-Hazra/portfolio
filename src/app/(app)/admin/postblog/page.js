@@ -14,6 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import LoadingComponent from '@/app/components/(utility)/Loading'
 
 
 const page = () => {
@@ -57,7 +58,7 @@ const page = () => {
     }
     return (
         <main className="w-full h-fit relative bg-[var(--body-color)]  ">
-            {/* {isLoading && <Loader />} */}
+            {isLoading && <LoadingComponent/>}
             <div className="w-full h-full md:px-[25%] py-10 flex items-center justify-center bg-[var(--nav-color)] min-h-screen">
                 <div className="w-full h-auto flex flex-col gap-6 bg-[var(--box-colors)] border border-[var(--form-border)] p-10 rounded-xl shadow-[0px_4px_10px_var(--shadow-secondary)]">
                     <h2 className="text-3xl md:text-4xl text-center font-extrabold text-[var(--text)]">
