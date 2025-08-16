@@ -7,6 +7,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { Button } from "@/components/ui/button"
 import useSetheight from '@/app/(app)/hooks/useSetHeight';
 import Link from 'next/link';
+import BrokenWordsAnimation from './BrokenWordsAnimation';
 
 
 const Asidebar = ({setShowFullscreenPhoto}) => {
@@ -16,20 +17,20 @@ const Asidebar = ({setShowFullscreenPhoto}) => {
 
     return (
         <>
-            <div ref={parent} className={`w-full lg:!h-auto bg-[var(--box-colors)] inline-block lg:flex lg:flex-col rounded-3xl border border-gray-800 relative  overflow-hidden transition-all ease-in-out duration-1000 `}>
+            <div ref={parent} className={`w-full lg:!h-auto overflow-x-hidden bg-[var(--box-colors)] inline-block lg:flex lg:flex-col rounded-3xl border border-gray-800 relative  overflow-hidden transition-all ease-in-out duration-1000 `}>
                 <div className=' py-10 px-5 md:p-10 lg:inline-block flex w-full gap-6 z-10 relative bg-[var(--box-colors)]'>
-                    <div className=' w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[200px] lg:w-full md:h-52 lg:h-52  '>
+                    <div id='timelineImage' className=' w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[200px] lg:w-full md:h-52 lg:h-52  '>
                         <button onClick={()=>setShowFullscreenPhoto(prevState=>!prevState)} className='w-full h-full rounded-[40px] overflow bg-[var(--child-box-color)]'>
                             <img className='w-full h-full object-cover rounded-full' src="./myPhotos/myPhoto1.jpg" alt="" />
                         </button>
                     </div>
                     <div className='flex flex-col gap-5 my-5 items-start justify-center lg:justify-center '>
-                        <div className='lg:text-2xl md:text-3xl text-xl font-bold text-[var(--text)]'>
-                            Sounak Hazra
+                        <div id='asideBroken' className='lg:text-2xl md:text-3xl text-xl font-bold text-[var(--text)]'>
+                            <BrokenWordsAnimation data='Sounak Hazra'/>
                         </div>
                         <div className='lg:text-xs md:text-sm text-xs text-[var(--text)] px-2 py-1 bg-[var(--child-box-color)] rounded-lg'>
-                            <span >
-                                Full Stack Devloper
+                            <span id='asideBroken' >
+                                <BrokenWordsAnimation data='Full Stack Devloper'/>
                             </span>
                         </div>
                     </div>
@@ -44,41 +45,59 @@ const Asidebar = ({setShowFullscreenPhoto}) => {
                     <div className='w-full lg:h-fit flex flex-wrap lg:gap-5 lg:flex-col lg:justify-between '>
                         <div className='flex gap-3 min-w-48 lg:w-auto md:m-0 m-2 '>
                             <div className='rounded-2xl pt-[1px] pl-[1px] special-background-border '>
-                                <div className='p-[9px] bg-[var(--small-box-color)] rounded-2xl'>
+                                <div id='epicons' className='p-[9px] bg-[var(--small-box-color)] rounded-2xl'>
                                     <MdOutlineMail className='text-[var(--svg-border-color)] w-6 h-6' />
                                 </div>
                             </div>
-                            <div className='flex flex-col justify-around'>
-                                <div className='text-gray-400 text-xs'>EMAIL</div>
-                                <div className='text-[var(--text)] text-sm'>hazrasounak87@gmail.com</div>
+                            <div id='asideBroken' className='flex flex-col justify-around'>
+                                <div className='text-gray-400 text-xs'>
+                                    <BrokenWordsAnimation data='EMAIL'/>
+                                    {/* EMAIL */}
+                                </div>
+                                <div className='text-[var(--text)] text-sm'>
+                                    <BrokenWordsAnimation data='hazrasounak87@gmail.com'/>
+                                    {/* hazrasounak87@gmail.com */}
+                                </div>
                             </div>
                         </div>
                         <div className='flex gap-3 w-48 lg:w-auto  md:m-0 m-2'>
 
                             <div className='rounded-2xl pt-[1px] pl-[1px] special-background-border '>
-                                <div className='p-[9px] bg-[var(--small-box-color)] rounded-2xl'>
+                                <div id='epicons' className='p-[9px] bg-[var(--small-box-color)] rounded-2xl'>
                                     <IoPhonePortraitOutline className='text-[var(--svg-border-color)] w-6 h-6' />
                                 </div>
                             </div>
-                            <div className='flex flex-col justify-around'>
-                                <div className='text-gray-400 text-xs'>PHONE</div>
-                                <div className='text-[var(--text)] text-sm'>Let's talk</div>
+                            <div id='asideBroken' className='flex flex-col justify-around'>
+                                <div className='text-gray-400 text-xs'>
+                                    {/* PHONE */}
+                                    <BrokenWordsAnimation data='PHONE'/>
+                                </div>
+                                <div className='text-[var(--text)] text-sm'>
+                                    <BrokenWordsAnimation data={`Let's talk`}/>
+                                    {/* Let's talk */}
+                                </div>
                             </div>
                         </div>
                         <div className='flex gap-3 w-48 lg:w-auto md:m-0 m-2'>
                             <div className='rounded-2xl pt-[1px] pl-[1px] special-background-border '>
-                                <div className='p-[9px] bg-[var(--small-box-color)] rounded-2xl'>
+                                <div id='epicons' className='p-[9px] bg-[var(--small-box-color)] rounded-2xl'>
                                     <FaLocationDot className='text-[var(--svg-border-color)] w-6 h-6' />
                                 </div>
                             </div>
-                            <div className='flex flex-col justify-around'>
-                                <div className='text-gray-400 text-xs'>LOCATION</div>
-                                <div className='text-[var(--text)] text-sm'>Westbengal,Amta,Howrah</div>
+                            <div id='asideBroken' className='flex flex-col justify-around'>
+                                <div className='text-gray-400 text-xs'>
+                                    {/* LOCATION */}
+                                    <BrokenWordsAnimation data='LOCATION'/>
+                                </div>
+                                <div className='text-[var(--text)] text-sm'>
+                                    {/* Westbengal,Amta,Howrah */}
+                                    <BrokenWordsAnimation data='Westbengal,Amta,Howrah'/>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className='lg:flex-grow lg:flex lg:items-end lg:justify-start'>
-                        <div className='h-10 w-full flex'>
+                        <div id='icons' className='h-10 w-full flex'>
                             <Link href={"https://github.com/Sounak-Hazra"} target='blank'>
                                 <img width={25} height={25} className='invert-[0.5] hover:invert-[0.8] transition-all duration-300 ease-in-out' src="./socialMediaIcons/github.svg" alt="" />
                             </Link>

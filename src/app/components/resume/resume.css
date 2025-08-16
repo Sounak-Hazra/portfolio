@@ -2,7 +2,7 @@
 
 .single-line-grid-box {
     display: grid;
-    gap: 5px;
+    gap: 8px;
     grid-template-columns: repeat(auto-fill, 50px);
 }
 

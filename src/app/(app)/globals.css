@@ -76,12 +76,18 @@
   }
 }
 
+html{
+  width: 100%;
+}
+
 body {
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
   background-color: #1e1e1f;
   color: white;
   box-sizing: border-box;
   cursor: url('/cursor.svg') 12 12, auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 button,switch,a{

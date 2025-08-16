@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 function useSetheight() {
     const child = useRef(null);
     const parent = useRef(null);
-    const [showContrast, setShowContrast] = useState(false);
+    const [showContrast, setShowContrast] = useState(true);
     const initialHeight = useRef(0)
 
 

@@ -54,7 +54,7 @@
 }
 
 .landing-animation-boxes {
-    animation: landing .3s ease-in-out forwards;
+    /* animation: landing .3s ease-in-out forwards; */
 }
 
 @keyframes landing {
