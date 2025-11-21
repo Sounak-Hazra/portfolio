@@ -115,4 +115,6 @@ def health_check():
 
 
 if __name__ == '__main__':
+    # WARNING: debug=True is for development only
+    # For production, use a WSGI server like gunicorn and set debug=False
     app.run(debug=True, host='0.0.0.0', port=5000)
