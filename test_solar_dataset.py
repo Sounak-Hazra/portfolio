@@ -6,6 +6,7 @@ Validates data quality and integrity
 
 import csv
 import os
+import math
 
 def test_file_exists():
     """Test that dataset file exists"""
@@ -62,7 +63,7 @@ def test_numeric_values():
             for field in numeric_fields:
                 try:
                     value = float(row[field])
-                    assert not (value != value), f"NaN value in {field} at row {i}"
+                    assert not math.isnan(value), f"NaN value in {field} at row {i}"
                 except ValueError:
                     raise AssertionError(f"Invalid numeric value in {field} at row {i}: {row[field]}")
     
