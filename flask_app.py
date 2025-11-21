@@ -61,9 +61,16 @@ def submit_data():
         # Get JSON data from request body
         data = request.get_json()
         
-        # Validate that all required fields are present
+        # Validate that request body is valid JSON
+        if data is None:
+            return jsonify({
+                'error': 'Invalid request',
+                'message': 'Request body must be valid JSON'
+            }), 400
+        
+        # Validate that all required fields are present and not None/empty
         required_fields = ['name', 'email', 'age', 'phone', 'address', 'city', 'country', 'postal_code']
-        missing_fields = [field for field in required_fields if field not in data]
+        missing_fields = [field for field in required_fields if field not in data or data[field] is None or (isinstance(data[field], str) and not data[field].strip())]
         
         if missing_fields:
             return jsonify({
