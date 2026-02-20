@@ -14,7 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import useCommaSepratedToArr from '../../hooks/useComaSepratedToArray'
+import commaSeparatedToArray from '../../hooks/useComaSepratedToArray'
 
 
 const Page = () => {
@@ -148,7 +148,9 @@ const Page = () => {
                                             <Input
                                                 className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
                                                 placeholder="give coma seprated values (eg: image1,image2...)"
-                                                onChange = {(e)=>form.setValue("images",useCommaSepratedToArr(e.target.value))}
+                                                onChange={(e) =>
+                                                    form.setValue("images", commaSeparatedToArray(e.target.value))
+                                                }
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -165,7 +167,9 @@ const Page = () => {
                                             <Input
                                                 className="bg-[var(--child-box-color)] text-[var(--text)] border border-[var(--small-box-color)] rounded-md p-3 focus:ring-[var(--svg-border-color)]"
                                                 placeholder="give coma seprated values (eg: key1,key2,...) "
-                                                onChange = {(e)=>form.setValue("keyfeatures",useCommaSepratedToArr(e.target.value))}
+                                                onChange={(e) =>
+                                                    form.setValue("keyfeatures", commaSeparatedToArray(e.target.value))
+                                                }
                                             />
                                         </FormControl>
                                         <FormMessage />
