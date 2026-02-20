@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import Link from 'next/link'
 
 
-const page = () => {
+const Page = () => {
 
     const { data: session } = useSession()
 
@@ -79,4 +79,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

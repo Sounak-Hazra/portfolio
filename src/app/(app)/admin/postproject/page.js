@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input"
 import useCommaSepratedToArr from '../../hooks/useComaSepratedToArray'
 
 
-const page = () => {
+const Page = () => {
 
     const [isLoading, setisLoading] = useState(false)
 
@@ -253,4 +253,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

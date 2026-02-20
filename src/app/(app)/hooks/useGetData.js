@@ -62,7 +62,7 @@ const useFetchData = () => {
     useEffect(() => {
         fetchProjects()
         fetchData()
-    }, [])
+    }, [fetchProjects, fetchData])
 
 
     return {

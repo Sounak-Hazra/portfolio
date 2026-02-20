@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function useSetProjectArray(data, key) {
     const [arrayOfProjects, setArrayOfProjects] = useState([]);
     const [allCategorys,setAllCategorys] = useState([])
 
-    const changeArray = (key = "all")=> {
+    const changeArray = useCallback((key = "all") => {
         if (!data || !Array.isArray(data)) return;
         if (key === "all") {
             let allProjects = []
@@ -21,14 +21,14 @@ function useSetProjectArray(data, key) {
             })
             setArrayOfProjects(selectedProjects)
         }
-    }
+    }, [data])
 
     useEffect(() => {
         if (!data || !Array.isArray(data)) return;
         const keys = data.map((e) => e._id)
         changeArray()
         setAllCategorys(keys)
-    },[data])
+    }, [data, changeArray])
 
     return { arrayOfProjects,allCategorys,changeArray };
 }
