@@ -1,52 +1,37 @@
 import gsap from "gsap";
-import { useRef } from "react";
 
+function comeOneByOne(ref, tl) {
+    const root = ref.current;
+    if (!root) return tl;
 
+    // headings + paragraphs as whole blocks (not per character)
+    const texts = root.querySelectorAll("h1, h2, p");
+    // only the 4 cards, not every nested div
+    const cards = Array.from(root.querySelector("#depthTimeLine")?.children ?? []);
 
-function comeOneByOne(ref, isrendered,tl) {
+    // reset leftovers from a previous build (Strict Mode / rebuilds)
+    gsap.set([...texts, ...cards], { clearProps: "all" });
 
-    const boxes = ref.current?.querySelectorAll("#broken");
-
-    if (isrendered.current) return
-    // const tl = gsap.timeline({paused:true})
-
-    tl.from(boxes, {
-        x: () => gsap.utils.random(-100, 100),
-        y: () => gsap.utils.random(-100, 100),
+    tl.from(texts, {
+        y: 24,
         opacity: 0,
-        stagger: .01,
-        duration: 0.5,
-        ease: "power2.out",
-    })
-
-    const depthDivs = ref.current.querySelector("#depthTimeLine").querySelectorAll("div")
-
-    depthDivs.forEach((element, i) => {
-        if (i % 2 == 0) {
-            tl.from(element, {
-                x: 150,
-                opacity: 0,
-                stagger: .3,
-                duration: 0.5,
-                ease: "power2.out",
-            }, "-=.3")
-        } else {
-            tl.from(element, {
-                x: -150,
-                opacity: 0,
-                stagger: .3,
-                duration: 0.5,
-                ease: "power2.out",
-            }, "-=.3")
-        }
+        filter: "blur(6px)",
+        duration: 0.6,
+        stagger: 0.08,
+        ease: "power3.out",
+        clearProps: "opacity,transform,filter",
     });
 
-    console.log("about runned")
-    isrendered.current = true
+    tl.from(cards, {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+        clearProps: "opacity,transform",
+    }, "-=0.3");
 
-    return tl
-
-
+    return tl;
 }
 
-export default comeOneByOne
+export default comeOneByOne;

@@ -12,11 +12,11 @@ import { useRef } from 'react'
 import FullScreenphoto from "../components/(utility)/FullScreenPhoto";
 import useFetchData from "./hooks/useGetData";
 import timeLineMain from "../gsapAnimation/main.gsap";
-import { master, registerAnimation } from "../gsapAnimation/masterTimeLine";
+import { registerAnimation } from "../gsapAnimation/masterTimeLine";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "react-responsive";
 import dynamic from "next/dynamic";
-
+const AskSounak = dynamic(() => import("../components/askSounak/AskSounak"), { ssr: false });
 
 export default function Page() {
 
@@ -25,22 +25,17 @@ export default function Page() {
   const [isPortfolio, setisPortfolio] = useState(false)
   const [isBlog, setisBlog] = useState(false)
   const { dark, setDark } = useDarkThem()
-  const [tl, setTl] = useState(null)
-
   const { blogs, project } = useFetchData()
 
   const [showFullScreenPhoto, setShowFullScreenPhoto] = useState(false)
   const gsapRef = useRef(null)
-  const isAnimated = useRef(false)
-
-
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)'
   })
 
   useGSAP(() => {
     registerAnimation("A", tl => {
-      timeLineMain(gsapRef, isAnimated, isDesktopOrLaptop, tl)
+      timeLineMain(gsapRef, isDesktopOrLaptop, tl)
     })
   },)
 
@@ -56,7 +51,7 @@ export default function Page() {
 
 
 
-        <FullScreenphoto isFullPhoto={showFullScreenPhoto} setIsFullScreen={setShowFullScreenPhoto} imgSrc="./myPhotos/myPhoto1.jpg" />
+        <FullScreenphoto isFullPhoto={showFullScreenPhoto} setIsFullScreen={setShowFullScreenPhoto} imgSrc="./myPhotos/myPhoto3.jpg" />
         <aside className="w-full lg:w-72 lg:!sticky lg:self-start lg:top-0 h-fit lg:!h-screen lg:flex lg:items-center rounded-3xl relative  flex items-center">
           <Asidebar setShowFullscreenPhoto={setShowFullScreenPhoto} />
         </aside>
@@ -79,7 +74,7 @@ export default function Page() {
             </motion.div>
           } */}
           <div className={`${isAbout ? "" : "hidden"}`}>
-            <About tl={tl} />
+            <About />
           </div>
           {isResume &&
             <motion.div
@@ -116,6 +111,7 @@ export default function Page() {
           }
         </div>
       </main>
+      <AskSounak />
     </>
   );
 }

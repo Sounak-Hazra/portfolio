@@ -1,25 +1,22 @@
-import React, { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Separator } from '@/components/ui/separator';
 import "./about.css"
 import "../(utility)/utility.css"
-import { MdOutlineTerminal } from "react-icons/md";
-import { useRef } from 'react';
 import comeOneByOne from '@/app/gsapAnimation/about.gsap';
-import gsap from 'gsap';
 import BrokenWordsAnimation from '../(utility)/BrokenWordsAnimation';
 import { useGSAP } from '@gsap/react';
 import { registerAnimation } from '@/app/gsapAnimation/masterTimeLine';
 import { startTimeLine } from '@/app/gsapAnimation/masterTimeLine';
+import { MdOutlineTerminal, MdOutlineWeb, MdOutlineStorage, MdOutlineSmartToy } from "react-icons/md";
 
-const About = ({ tl }) => {
+const About = () => {
 
   const gsapRef = useRef()
-  const isrendered = useRef(false)
 
 
   useGSAP(() => {
     registerAnimation("B", (tl) => {
-      return comeOneByOne(gsapRef, isrendered, tl)
+      return comeOneByOne(gsapRef, tl)
     })
   },
     {
@@ -37,8 +34,7 @@ const About = ({ tl }) => {
   return (
     <>
       <div ref={gsapRef} className='w-full overflow-hidden min-h-full py-7 px-7 rounded-3xl'>
-        <h1 id='timeLine 1' className='text-3xl text-[var(--text)] font-extrabold '>
-          {/* About Me */}
+        <h1 className='text-3xl text-[var(--text)] font-extrabold '>
           <BrokenWordsAnimation data={`About Me`} />
         </h1>
         <Separator className='w-full my-5 sm:my-8' />
@@ -46,25 +42,25 @@ const About = ({ tl }) => {
 
           {/*chat gpt */}
           <div className="bg-inherit text-[var(--text)]">
-            <div id='brokenWords' className="max-w-4xl mx-auto">
-              <h2 id='timeLine' className="text-2xl font-bold mb-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">
                 <BrokenWordsAnimation data={`Hey Folks, I'm Sounak`} />
               </h2>
 
-              <p id='timeLine' className="text-base text-[var(--text)] leading-relaxed">
-                <BrokenWordsAnimation data={`I'm a Full-Stack Developer driven by a deep curiosity for how technology can create meaningful, human-centered solutions. With hands-on experience in modern frameworks like Next.js, React.js, and MongoDB, I specialize in crafting high-performance, scalable applications that feel intuitive and engaging to users.`} />
+              <p className="text-base text-[var(--text)] leading-relaxed">
+                <BrokenWordsAnimation data={`I'm a full-stack developer who builds production-style systems end to end: Next.js and React on the front, Node, Express and MongoDB on the back, Docker and Vercel for shipping. I'm currently a Full Stack Developer intern at AaoStays, where I lead 4-5 interns on a shared backend powering three apps (user, employee, admin).`} />
               </p>
 
-              <p id='timeLine' className="mt-4 text-lg text-[var(--text)] leading-relaxed">
-                <BrokenWordsAnimation data={`For me, development is more than just writing code — it’s about solving real problems, telling stories through design, and shaping smooth digital journeys. I enjoy bridging the gap between clean, efficient backend logic and polished, dynamic interfaces that delight users.`} />
+              <p className="mt-4 text-lg text-[var(--text)] leading-relaxed">
+                <BrokenWordsAnimation data={`I like the harder parts of the stack: real-time terminals over WebSockets, isolated Docker execution environments, Razorpay payment webhooks, and booking logic. One availability API I built dropped from 800ms to 200ms.`} />
               </p>
 
-              <p id='timeLine' className="mt-4 text-lg text-[var(--text)] leading-relaxed">
-                <BrokenWordsAnimation data={`Outside of pure development, I’m constantly exploring new tools, design patterns, and industry trends to stay ahead of the curve. Whether it’s optimizing a database query, experimenting with micro-interactions, or learning a fresh JavaScript feature, I’m always seeking ways to refine my craft.`} />
+              <p className="mt-4 text-lg text-[var(--text)] leading-relaxed">
+                <BrokenWordsAnimation data={`I also build with LLMs and RAG. My browser IDE (Vibe Code Editor) has an offline AI assistant running on Ollama with token-level streaming, and Distill is a RAG-based tool that analyzes GitHub repos so you can chat with the codebase. I'm doing my B.Tech in CSE (AI & ML) at Brainware University.`} />
               </p>
 
-              <p id='timeLine' className="mt-4 text-lg text-[var(--text)] font-semibold">
-                <BrokenWordsAnimation data={`If you’re looking for a developer who blends creativity with technical precision — and who approaches challenges with a collaborative and open mindset — let’s connect and bring your ideas to life.`} />
+              <p className="mt-4 text-lg text-[var(--text)] font-semibold">
+                <BrokenWordsAnimation data={`I'm open to roles where I can work across the full stack and on LLM-powered features. If that sounds like your team, let's talk.`} />
               </p>
             </div>
           </div>
@@ -73,8 +69,7 @@ const About = ({ tl }) => {
         </div>
         <Separator className='w-full my-5 sm:my-8' />
         <div>
-          <h2 id='timeLine 3' className='text-2xl text-[var(--text)] font-extrabold'>
-            {/* My Area of Expertise */}
+          <h2 className='text-2xl text-[var(--text)] font-extrabold'>
             <BrokenWordsAnimation data={`My Area of Expertise`} />
           </h2>
           <div id='depthTimeLine' className='my-5 grid-for-areaOfExpertis'>
@@ -82,14 +77,46 @@ const About = ({ tl }) => {
             <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about small-box-shadows'>
               <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
                 <div className=' w-16 sm:w-20 '>
-                  <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
+                  <MdOutlineWeb className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
                 </div>
                 <div className='flex-1 flex flex-col gap-2 '>
                   <h3 className='text-xl font-extrabold text-[var(--text)]'>
-                    Web Development
+                    Full-Stack Web Development
                   </h3>
                   <div className=' text-[var(--text)] text-xs py-1'>
-                    Full-stack development with Next.js, React, and MongoDB, delivering high-quality, scalable web applications.
+                    Next.js, React, Node and MongoDB apps, from booking platforms to e-commerce, deployed on Vercel.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about small-box-shadows'>
+              <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
+                <div className=' w-16 sm:w-20 '>
+                  <MdOutlineStorage className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
+                </div>
+                <div className='flex-1 flex flex-col gap-2 '>
+                  <h3 className='text-xl font-extrabold text-[var(--text)]'>
+                    Backend, APIs & Payments
+                  </h3>
+                  <div className=' text-[var(--text)] text-xs py-1'>
+                    Shared backends, JWT auth, Razorpay webhooks, and APIs optimized from 800ms to 200ms.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about small-box-shadows'>
+              <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
+                <div className=' w-16 sm:w-20 '>
+                  <MdOutlineSmartToy className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
+                </div>
+                <div className='flex-1 flex flex-col gap-2 '>
+                  <h3 className='text-xl font-extrabold text-[var(--text)]'>
+                    GenAI, LLMs & RAG
+                  </h3>
+                  <div className=' text-[var(--text)] text-xs py-1'>
+                    RAG over codebases, streaming LLM assistants with Ollama, and LLM API integration in Python and JS.
                   </div>
                 </div>
               </div>
@@ -102,42 +129,10 @@ const About = ({ tl }) => {
                 </div>
                 <div className='flex-1 flex flex-col gap-2 '>
                   <h3 className='text-xl font-extrabold text-[var(--text)]'>
-                    Python Development
+                    Real-Time & Docker Systems
                   </h3>
                   <div className=' text-[var(--text)] text-xs py-1'>
-                    Building efficient Python applications, including automation scripts, data processing, and backend development.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about small-box-shadows'>
-              <div className='min-h-36 sm:h-44 bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
-                <div className=' w-16 sm:w-20 '>
-                  <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
-                </div>
-                <div className='flex-1 flex flex-col gap-2 '>
-                  <h3 className='text-xl font-extrabold text-[var(--text)]'>
-                    Java Programming
-                  </h3>
-                  <div className=' text-[var(--text)] text-xs py-1'>
-                    Creating robust and optimized Java applications while deepening expertise in object-oriented programming.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className='pl-[1px] pt-[1px] rounded-3xl rounded-br-[27px] borders special-background-border-about small-box-shadows'>
-              <div className='min-h-36 sm:h-44 min bg-[var(--about-boxes-color)] flex gap-2 sm:gap-5 sm:py-10 py-4 px-2 sm:px-5 rounded-3xl'>
-                <div className=' w-16 sm:w-20 '>
-                  <MdOutlineTerminal className=' w-14 h-16 sm:h-16 sm:w-16 text-[var(--svg-border-color)]' />
-                </div>
-                <div className='flex-1 flex flex-col gap-2 '>
-                  <h3 className='text-xl font-extrabold text-[var(--text)]'>
-                    Node.js & Authentication
-                  </h3>
-                  <div className=' text-[var(--text)] py-1 text-xs'>
-                    Developing secure backend solutions using Node.js, Express, JWT authentication, and MongoDB integration.
+                    WebSockets and PTY terminals with per-user Docker containers for isolated code execution.
                   </div>
                 </div>
               </div>

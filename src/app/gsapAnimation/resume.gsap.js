@@ -1,94 +1,86 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function resumeAnimation(isAnimated, isDesktop) {
-    if (isAnimated.current) return
+    // clean up the previous run (Strict Mode / re-mount)
+    if (typeof isAnimated.current === "function") isAnimated.current()
 
-    isAnimated.current = true
+    const groups = Array.from(document.querySelectorAll("#images"))
+    const cleanups = []
+    const triggers = []
 
-    const tl = gsap.timeline()
+    groups.forEach((group) => {
+        const icons = Array.from(group.children)
+        if (!icons.length) return
 
-    if (isDesktop) {
-        const images = document.querySelectorAll("#images")
+        // entry: rise + scale up + blur clearing, flowing across the row
+        const tween = gsap.from(icons, {
+            y: 28,
+            scale: 0.85,
+            opacity: 0,
+            filter: "blur(8px)",
+            duration: 0.8,
+            stagger: { each: 0.07, from: "start" },
+            ease: "power3.out",
+            clearProps: "opacity,transform,filter",
+            scrollTrigger: {
+                trigger: group,
+                start: "top 85%",
+                once: true,
+            },
+        })
+        triggers.push(tween.scrollTrigger)
 
-        for (let i = 0; i < images.length; i++) {
-            const icons = Array.from(images[i].children)
-
-            tl.from(icons, {
-                x: () => gsap.utils.random(-100, 100),
-                y: () => gsap.utils.random(-100, 100),
-                opacity: 0,
-                duration: .3,
-                stagger: 0.3,
-            },)
-
-            icons.forEach((e) => {
-                e.addEventListener("mouseenter", () => {
-                    gsap.to(e, {
-                        scale: 1.5,
-                        duration: .5,
-                        x: 10,
-                        y: -10,
-                        zIndex: 10,
-
+        // hover: lift the icon, softly dim the others (desktop only)
+        if (isDesktop) {
+            icons.forEach((el) => {
+                const enter = () => {
+                    gsap.to(el, {
+                        scale: 1.18,
+                        y: -6,
+                        opacity: 1,
+                        duration: 0.35,
+                        ease: "power3.out",
+                        overwrite: "auto",
                     })
-                })
-                e.addEventListener("mouseleave", () => {
-                    gsap.to(e, {
-                        scale: 1,
-                        duration: .5,
-                        x: 0,
-                        y: 0,
+                    gsap.to(icons.filter((i) => i !== el), {
+                        opacity: 0.45,
+                        scale: 0.96,
+                        duration: 0.35,
+                        ease: "power2.out",
+                        overwrite: "auto",
                     })
-                })
-            })
-        }
-    } else {
-        const images = document.querySelectorAll("#images")
-
-        for (let i = 0; i < images.length; i++) {
-            const icons = Array.from(images[i].children)
-
-            tl.from(icons, {
-                x: () => gsap.utils.random(-1000, 1000),
-                y: () => gsap.utils.random(-1000, 1000),
-                opacity: 0,
-                duration: .1,
-                scrollTrigger: {
-                    trigger: skill[i],
-                    scrub: 2,
-                    scroller: "body",
-                    end:"top 60%",
-                    toggleActions: "play none none none",
-        
                 }
-            },)
-
-            icons.forEach((e) => {
-                e.addEventListener("mouseenter", () => {
-                    gsap.to(e, {
-                        scale: 1.5,
-                        duration: .5,
-                        x: 10,
-                        y: -10,
-                        zIndex: 10,
-                    })
-                })
-                e.addEventListener("mouseleave", () => {
-                    gsap.to(e, {
+                const leave = () => {
+                    gsap.to(icons, {
                         scale: 1,
-                        duration: .5,
-                        x: 0,
                         y: 0,
-                        zIndex:0
+                        opacity: 1,
+                        duration: 0.4,
+                        ease: "power2.out",
+                        overwrite: "auto",
                     })
+                }
+                el.addEventListener("mouseenter", enter)
+                el.addEventListener("mouseleave", leave)
+                cleanups.push(() => {
+                    el.removeEventListener("mouseenter", enter)
+                    el.removeEventListener("mouseleave", leave)
                 })
             })
         }
+    })
+
+    // cleanup fn stored in the ref so the next call can undo this one
+    isAnimated.current = () => {
+        triggers.forEach((t) => t && t.kill())
+        cleanups.forEach((fn) => fn())
+        groups.forEach((g) => gsap.set(Array.from(g.children), { clearProps: "all" }))
     }
 
+    return isAnimated.current
 }
 
 export default resumeAnimation

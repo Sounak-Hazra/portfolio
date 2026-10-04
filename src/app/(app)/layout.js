@@ -31,7 +31,7 @@ export const metadata = {
     "Frontend",
     "Backend",
   ],
-  author: "Sounak Hazra",
+  authors: [{ name: "Sounak Hazra" }],
   openGraph: {
     title: "Sounak Hazra | Full-Stack Developer",
     description: "Explore my portfolio featuring cutting-edge web development projects, skills, and more.",
