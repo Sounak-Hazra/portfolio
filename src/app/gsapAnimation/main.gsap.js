@@ -1,20 +1,8 @@
-import { stagger } from "framer-motion";
 import gsap from "gsap";
-import { useMediaQuery } from "react-responsive";
 
-
-
-
-function timeLineMain(ref, isrendered, isDesktopOrLaptop, tl) {
-
-    if (isrendered.current) return
-
-
-    isrendered.current = true
-    // const tl = gsap.timeline({paused:true})
+function timeLineMain(ref, isDesktopOrLaptop, tl) {
     const aside = ref.current.querySelector("aside")
     const mainImage = ref.current.querySelector("#timelineImage")
-    const brokenDataArray = ref.current.querySelectorAll("#asideBroken #broken")
     const main = ref.current.querySelector("#main")
 
     let nav 
@@ -24,9 +12,10 @@ function timeLineMain(ref, isrendered, isDesktopOrLaptop, tl) {
         nav = ref.current.querySelector("nav.md\\:hidden")
     }
     const navElements = nav.querySelectorAll("li")
-    // nav.forEach(element => {
-    //     navElements.push(...element.querySelectorAll("li"))
-    // });
+
+    gsap.set([ref.current, aside, mainImage, ...aside.querySelectorAll("#epicons"), ...aside.querySelectorAll("#icons a"), main, nav, ...navElements], {
+        clearProps: "all",
+    })
 
     tl
         .to(ref.current, {
@@ -51,12 +40,6 @@ function timeLineMain(ref, isrendered, isDesktopOrLaptop, tl) {
             opacity: 0,
             stagger: 0.1,
             duration: 0.3
-        })
-        .from(brokenDataArray, {
-            x: () => gsap.utils.random(-100, 100),
-            y: () => gsap.utils.random(-100, 100),
-            opacity: 0,
-            stagger: 0.03
         })
         .from(aside.querySelectorAll("#icons a"), {
             y: 30,

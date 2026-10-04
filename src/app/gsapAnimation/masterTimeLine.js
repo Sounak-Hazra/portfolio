@@ -17,7 +17,6 @@ export const buildTimeline = () => {
 
 export const startTimeLine = ()=>{
     buildTimeline()
-    console.log("runned")
     tl.play()
 
 }
