@@ -1,7 +1,91 @@
 .grid-for-projects{
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap: 24px;
+}
+
+.grid-for-projects > button {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 290px;
+    padding: 10px;
+    text-align: left;
+    background: var(--small-box-color);
+    border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+    transition:
+        transform 250ms ease,
+        border-color 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.grid-for-projects > button:hover,
+.grid-for-projects > button:focus-visible {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--svg-border-color) 65%, transparent);
+    box-shadow: 0 14px 30px color-mix(in srgb, var(--shadow-primary) 65%, transparent);
+}
+
+.grid-for-projects > button:focus-visible {
+    outline: 2px solid var(--svg-border-color);
+    outline-offset: 3px;
+}
+
+.grid-for-projects > button > div:last-child {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 76px;
+    padding: 0 4px;
+}
+
+.grid-for-projects > button > div:last-child p:first-child {
+    line-height: 1.4;
+}
+
+.grid-for-projects > button > div:last-child p:last-child {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.45;
+}
+
+.project {
+    position: relative;
+    height: 190px;
+    isolation: isolate;
+    background: var(--child-box-color);
+}
+
+.project::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background: linear-gradient(
+        110deg,
+        var(--child-box-color) 20%,
+        color-mix(in srgb, var(--text) 12%, var(--child-box-color)) 45%,
+        var(--child-box-color) 70%
+    );
+    background-size: 220% 100%;
+    animation: portfolio-image-loader 1.35s linear infinite;
+}
+
+.projectImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    background: linear-gradient(
+        110deg,
+        var(--child-box-color) 20%,
+        color-mix(in srgb, var(--text) 12%, var(--child-box-color)) 45%,
+        var(--child-box-color) 70%
+    );
+    background-size: 220% 100%;
 }
 
 .project:hover .eye{
@@ -11,4 +95,39 @@
 
 .project:hover .projectImage{
     filter: brightness(.5);
+}
+
+@keyframes portfolio-image-loader {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -20% 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-for-projects {
+        gap: 18px;
+    }
+
+    .grid-for-projects > button {
+        min-height: 270px;
+    }
+
+    .project,
+    .projectImage {
+        height: 175px;
+        min-height: 175px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project::before {
+        animation: none;
+    }
+
+    .grid-for-projects > button {
+        transition: none;
+    }
 }
