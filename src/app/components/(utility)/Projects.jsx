@@ -2,7 +2,7 @@ import React from 'react'
 import { FaEye } from "react-icons/fa";
 
 
-const Projects = ({ projects = [], setIsDetails, setProjectDetails }) => {
+const Projects = ({ projects = [], isLoading = false, setIsDetails, setProjectDetails }) => {
 
     const moveToDetails = (e) => {
         setProjectDetails(e)
@@ -13,7 +13,17 @@ const Projects = ({ projects = [], setIsDetails, setProjectDetails }) => {
     return (
         <div className=' text-[var(--text)] w-full max-h-full  grid-for-projects'>
             {
-                projects.map((e) => {
+                isLoading
+                    ? Array.from({ length: 6 }, (_, index) => (
+                        <div key={`project-skeleton-${index}`} className='portfolio-project-skeleton rounded-2xl small-box-shadows' aria-hidden='true'>
+                            <div className='portfolio-project-skeleton-image rounded-xl' />
+                            <div className='portfolio-project-skeleton-copy'>
+                                <div className='portfolio-project-skeleton-title' />
+                                <div className='portfolio-project-skeleton-description' />
+                            </div>
+                        </div>
+                    ))
+                    : projects.map((e) => {
                     return (
                         <button key={e._id} onClick={() => moveToDetails(e)} className='rounded-2xl bg-inherit landing-animation-boxes small-box-shadows pb-2'>
                             <div className="relative overflow-hidden rounded-xl">

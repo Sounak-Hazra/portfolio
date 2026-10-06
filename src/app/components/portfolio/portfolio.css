@@ -19,6 +19,46 @@
         box-shadow 250ms ease;
 }
 
+.portfolio-project-skeleton {
+    min-height: 290px;
+    padding: 10px;
+    background: var(--small-box-color);
+}
+
+.portfolio-project-skeleton-image,
+.portfolio-project-skeleton-title,
+.portfolio-project-skeleton-description {
+    background: linear-gradient(
+        110deg,
+        var(--child-box-color) 20%,
+        color-mix(in srgb, var(--text) 12%, var(--child-box-color)) 45%,
+        var(--child-box-color) 70%
+    );
+    background-size: 220% 100%;
+    animation: portfolio-image-loader 1.35s linear infinite;
+}
+
+.portfolio-project-skeleton-image {
+    height: 190px;
+}
+
+.portfolio-project-skeleton-copy {
+    padding: 16px 4px 0;
+}
+
+.portfolio-project-skeleton-title {
+    width: 78%;
+    height: 14px;
+    border-radius: 999px;
+}
+
+.portfolio-project-skeleton-description {
+    width: 92%;
+    height: 11px;
+    margin-top: 13px;
+    border-radius: 999px;
+}
+
 .grid-for-projects > button:hover,
 .grid-for-projects > button:focus-visible {
     transform: translateY(-5px);
@@ -115,6 +155,14 @@
         min-height: 270px;
     }
 
+    .portfolio-project-skeleton {
+        min-height: 270px;
+    }
+
+    .portfolio-project-skeleton-image {
+        height: 175px;
+    }
+
     .project,
     .projectImage {
         height: 175px;
@@ -124,6 +172,12 @@
 
 @media (prefers-reduced-motion: reduce) {
     .project::before {
+        animation: none;
+    }
+
+    .portfolio-project-skeleton-image,
+    .portfolio-project-skeleton-title,
+    .portfolio-project-skeleton-description {
         animation: none;
     }
 

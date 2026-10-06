@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, memo, useMemo } from 'react'
+import React, { useState, memo } from 'react'
 import { Separator } from '@/components/ui/separator'
 import Projects from '../(utility)/Projects'
 import "./portfolio.css"
@@ -6,12 +6,9 @@ import ProjectDetails from '../(utility)/ProjectDetails'
 import useSetProjectArray from '@/app/(app)/hooks/useSetProjectsArray'
 
 
-const Portfolio = ({project}) => {
+const Portfolio = ({ project, isLoading }) => {
 
-    // const [project, setProject] = useState([]);
     const [isDetails, setIsDetails] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState("")
     const [projectDetails, setProjectDetails] = useState({})
 
     const { arrayOfProjects, allCategorys, changeArray } = useSetProjectArray(project, "all")
@@ -75,7 +72,12 @@ const Portfolio = ({project}) => {
                             </div>
                         </div>
                         <div className='my-5'>
-                            <Projects projects={arrayOfProjects} setIsDetails={setIsDetails} setProjectDetails={setProjectDetails} />
+                            <Projects
+                                projects={arrayOfProjects}
+                                isLoading={isLoading}
+                                setIsDetails={setIsDetails}
+                                setProjectDetails={setProjectDetails}
+                            />
                         </div>
                     </div>
                 }

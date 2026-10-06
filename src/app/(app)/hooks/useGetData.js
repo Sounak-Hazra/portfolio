@@ -36,9 +36,11 @@ const useFetchData = () => {
     
     //Project project 
     const [project, setProject] = useState([]);
+    const [projectLoading, setProjectLoading] = useState(true);
 
 
     const fetchProjects = useCallback(async () => {
+        setProjectLoading(true)
         try {
             const res = await fetch("api/getprojects", {
                 method: "GET"
@@ -55,7 +57,7 @@ const useFetchData = () => {
             setError(error.message)
             setProject([])
         } finally {
-            setIsLoading(false)
+            setProjectLoading(false)
         }
     }, [])
 
@@ -67,7 +69,8 @@ const useFetchData = () => {
 
     return {
         blogs,
-        project
+        project,
+        projectLoading
     }
 }
 

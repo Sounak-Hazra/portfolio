@@ -25,7 +25,7 @@ export default function Page() {
   const [isPortfolio, setisPortfolio] = useState(false)
   const [isBlog, setisBlog] = useState(false)
   const { dark, setDark } = useDarkThem()
-  const { blogs, project } = useFetchData()
+  const { blogs, project, projectLoading } = useFetchData()
 
   const [showFullScreenPhoto, setShowFullScreenPhoto] = useState(false)
   const gsapRef = useRef(null)
@@ -95,7 +95,7 @@ export default function Page() {
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <Portfolio project={project} />
+              <Portfolio project={project} isLoading={projectLoading} />
             </motion.div>
           }
           {isBlog &&
